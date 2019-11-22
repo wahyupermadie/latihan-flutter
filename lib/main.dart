@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'movies_list.dart';
 
 void main(){
   runApp( new MaterialApp(
@@ -19,7 +20,7 @@ class _State extends State<MyApp>{
 
   void _onPressed(){
     setState(() {
-      _value = _email;
+      _value = _password;
     });
   }
 
@@ -62,6 +63,8 @@ class _State extends State<MyApp>{
                 new Padding(
                   padding: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
                   child: new TextField(
+                    onChanged: _onChangePassword,
+                    obscureText: true,
                     decoration: new InputDecoration(
                       labelText: "Input Password",
                       hintText: "Masukan password anda",
@@ -71,7 +74,14 @@ class _State extends State<MyApp>{
                 ),
                 new Padding(
                   padding: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
-                  child: new RaisedButton(onPressed: _onPressed, child: new Text("Submit"),),
+                  child: new SizedBox(
+                    width: double.infinity,
+                    child: new RaisedButton(onPressed: () {
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => SecondApp()));
+                    }, child: new Text("Submit"))
+                  )
                 )
               ],
             ),
