@@ -14,12 +14,27 @@ class MyApp extends StatefulWidget{
 class _State extends State<MyApp>{
 
   var _value = "Hello Bro";
+  String _email;
+  String _password;
 
   void _onPressed(){
     setState(() {
-      _value = "Hello Coyy";
+      _value = _email;
     });
   }
+
+  void _onChangeEmail(value){
+    setState(() {
+      _email = value;
+    });
+  }
+
+  void _onChangePassword(value){
+    setState(() {
+      _password = value;    
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
       return new Scaffold(
@@ -32,7 +47,32 @@ class _State extends State<MyApp>{
             child: new Column(
               children: <Widget>[
                 new Text(_value),
-                new RaisedButton(onPressed: _onPressed, child: new Text("Submit"),)
+                new Padding(
+                  padding: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
+                  child: new TextField(
+                    onChanged: _onChangeEmail,
+                    decoration: new InputDecoration(
+                      labelText: "Input Email",
+                      hintText: "Masukan email anda",
+                      icon: new Icon(Icons.email)
+                    ),
+                    keyboardType: TextInputType.text,
+                  ),
+                ),
+                new Padding(
+                  padding: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
+                  child: new TextField(
+                    decoration: new InputDecoration(
+                      labelText: "Input Password",
+                      hintText: "Masukan password anda",
+                      icon: new Icon(Icons.lock)
+                    ),
+                  ),
+                ),
+                new Padding(
+                  padding: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
+                  child: new RaisedButton(onPressed: _onPressed, child: new Text("Submit"),),
+                )
               ],
             ),
           ),
