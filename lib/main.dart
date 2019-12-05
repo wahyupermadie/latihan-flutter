@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'movies_list.dart';
+import 'package:my_app/component.dart';
+import 'helper.dart';
 
 void main(){
   runApp( new MaterialApp(
@@ -14,30 +16,30 @@ class MyApp extends StatefulWidget{
 
 class _State extends State<MyApp>{
 
-  var _value = "Hello Bro";
   String _email;
   String _password;
-  bool _isEmailValid = true;
-
-  var emailValidator = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-
-  void _onPressed(){
-    setState(() {
-      _value = _password;
-    });
-  }
+  bool _isEmailValid = false;
+  bool _isPasswordValid = false;
+  bool _isDataValid = false;
 
   void _onChangeEmail(value){
     setState(() {
       _email = value;
-      _isEmailValid = emailValidator.hasMatch(value);
+      _isEmailValid = validateEmail(value);
+      onValidate();
     });
   }
 
   void _onChangePassword(value){
     setState(() {
-      _password = value;    
+      _password = value;   
+      _isPasswordValid = validatePassword(value);
+      onValidate();
     });
+  }
+
+  void onValidate(){
+    _isDataValid = _isEmailValid && _isPasswordValid;
   }
 
   @override
@@ -52,14 +54,13 @@ class _State extends State<MyApp>{
           child: new Center(
             child: new Column(
               children: <Widget>[
-                new Text(_value),
                 new Padding(
                   padding: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
                   child: new TextField(
                     onChanged: _onChangeEmail,
                     decoration: new InputDecoration(
                       errorText: !_isEmailValid ? "Email Format Salah" : null,
-                      labelText: "Input Email",
+                      labelText: "Input $_email",
                       hintText: "Masukan email anda",
                       icon: new Icon(Icons.email)
                     ),
@@ -78,36 +79,25 @@ class _State extends State<MyApp>{
                     ),
                   ),
                 ),
-                _Button(
-                  text : "Click Gue", 
-                  onClick : (state) {
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => SecondApp()));
-              })
+                ButtonLogin(
+                  text : "LOGIN", 
+                  isClickAble: _isDataValid,
+                  onClickPopup: () {
+                    showDialogPopup(
+                      context: context,
+                      title: "Login Anda Berhasil",
+                      content: "Apakah anda akan melanjutkan ?",
+                      acceptFunc: () {
+                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                          context, 
+                          MaterialPageRoute(builder: (context) => SecondApp()));
+                      });
+                  }),
               ],
             ),
           ),
         ),
       );
-  }
-}
-
-class _Button extends StatelessWidget  {
-
-  final String text;
-  final Function onClick;
-
-  _Button({this.text, this.onClick});
-
-  @override
-  Widget build(BuildContext context) {
-   return Padding(
-      padding: EdgeInsets.fromLTRB(0, 16.0, 0, 0),
-      child: new SizedBox(
-        width: double.infinity,
-        child: new RaisedButton(onPressed: onClick, child: new Text(text))
-      )
-    );
   }
 }
