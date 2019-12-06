@@ -74,7 +74,7 @@ class Results {
     originalTitle = json['original_title'];
     genreIds = json['genre_ids'].cast<int>();
     title = json['title'];
-    voteAverage = json['vote_average'];
+    //voteAverage = double.parse(json['vote_average']);
     overview = json['overview'];
     releaseDate = json['release_date'];
   }
