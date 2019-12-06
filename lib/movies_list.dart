@@ -86,7 +86,10 @@ class _MoviesList extends StatelessWidget {
   ListTile _listTile(BuildContext context, int index) {
     return ListTile(
       title: new Text(movies.results[index].originalTitle.toString()),
-      subtitle: new Text(movies.results[index].overview.toString()),
+      subtitle: new Text(movies.results[index].overview.toString(),
+        overflow: TextOverflow.ellipsis,
+        maxLines: 3,
+        softWrap: true,),
     );
   }
 
