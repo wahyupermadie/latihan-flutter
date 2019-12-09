@@ -60,7 +60,7 @@ class _State extends State<MyApp>{
                     onChanged: _onChangeEmail,
                     decoration: new InputDecoration(
                       errorText: !_isEmailValid ? "Email Format Salah" : null,
-                      labelText: "Input $_email",
+                      labelText: "Input Email",
                       hintText: "Masukan email anda",
                       icon: new Icon(Icons.email)
                     ),

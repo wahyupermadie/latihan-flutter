@@ -68,7 +68,9 @@ class _State extends State<SecondApp> {
               if (state is MoviesFetchSuccess) {
                 return _MoviesList(movies: state.movies,);
               }else{
-                return CircularProgressIndicator();
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
               }
             },
           ),
