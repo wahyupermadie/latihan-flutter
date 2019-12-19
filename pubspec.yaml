@@ -25,7 +25,6 @@ dependencies:
   rxdart: ^0.22.6
   meta: ^1.1.6
   equatable: ^0.6.0
-  alice: ^0.0.17
   dio: ^3.0.3
 
   # The following adds the Cupertino Icons font to your application.
@@ -78,3 +77,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+module:
+    androidX: true
