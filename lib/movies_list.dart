@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter/route/routing_const.dart';
-import 'movies_detail.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_flutter/bloc/movies_bloc.dart';
-import 'package:my_flutter/bloc/movies_state.dart';
-import 'package:my_flutter/bloc/movies_event.dart';
-import 'package:my_flutter/data/domain/movies_domain.dart';
-import 'package:my_flutter/data/repository/movies_repository.dart';
-
+import 'package:my_app/bloc/movies_event.dart';
+import 'package:my_app/bloc/movies_state.dart';
+import 'package:my_app/route/routing_const.dart';
+import 'bloc/movies_bloc.dart';
+import 'data/domain/movies_domain.dart';
 import 'data/movies/movies.dart';
+import 'data/repository/movies_repository.dart';
 
 void main(){
   runApp(
