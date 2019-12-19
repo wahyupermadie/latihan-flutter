@@ -1,9 +1,9 @@
 
-
 import 'package:alice/alice.dart';
 import 'package:dio/dio.dart';
 import 'package:my_app/data/movies/movies.dart';
-import 'package:my_app/constants.dart';
+
+import '../../constants.dart';
 
 class MoviesRepository {
   Dio dio = Dio();

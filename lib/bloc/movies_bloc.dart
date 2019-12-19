@@ -1,9 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/bloc/movies_event.dart';
-import 'package:my_app/bloc/movies_state.dart';
 import 'package:my_app/data/domain/movies_domain.dart';
 import 'package:my_app/data/movies/movies.dart';
+
+import 'movies_event.dart';
+import 'movies_state.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState>{
   final MoviesDomain moviesDomain;

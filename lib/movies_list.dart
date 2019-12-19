@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/component.dart';
+import 'package:my_flutter/route/routing_const.dart';
+import 'movies_detail.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/bloc/movies_bloc.dart';
-import 'package:my_app/bloc/movies_state.dart';
-import 'package:my_app/bloc/movies_event.dart';
-import 'package:my_app/data/domain/movies_domain.dart';
-import 'package:my_app/data/repository/movies_repository.dart';
+import 'package:my_flutter/bloc/movies_bloc.dart';
+import 'package:my_flutter/bloc/movies_state.dart';
+import 'package:my_flutter/bloc/movies_event.dart';
+import 'package:my_flutter/data/domain/movies_domain.dart';
+import 'package:my_flutter/data/repository/movies_repository.dart';
 
 import 'data/movies/movies.dart';
 
@@ -87,6 +88,8 @@ class _MoviesList extends StatelessWidget {
   
   ListTile _listTile(BuildContext context, int index) {
     return ListTile(
+      onTap: () => Navigator.pushNamed(context, DetailMovies, arguments: movies.results[index])
+                  ,
       title: new Text(movies.results[index].originalTitle.toString()),
       subtitle: new Text(movies.results[index].overview.toString(),
         overflow: TextOverflow.ellipsis,

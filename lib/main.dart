@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'movies_list.dart';
 import 'package:my_app/component.dart';
+import 'package:my_app/route/router.dart';
+import 'package:my_app/route/routing_const.dart';
 import 'helper.dart';
 
 void main(){
   runApp( new MaterialApp(
-    home: new MyApp()
+    onGenerateRoute: Router.generateRoute,
+    initialRoute: AuthMovies,
   ));
 }
 
@@ -89,9 +91,9 @@ class _State extends State<MyApp>{
                       content: "Apakah anda akan melanjutkan ?",
                       acceptFunc: () {
                         Navigator.pop(context);
-                        Navigator.pushReplacement(
+                        Navigator.pushReplacementNamed(
                           context, 
-                          MaterialPageRoute(builder: (context) => SecondApp()));
+                          ListMovies);
                       });
                   }),
               ],
